@@ -1,7 +1,7 @@
 #include <gtest/gtest.h>
 
-#include "mocks/MockObserver.hpp"
-#include "mocks/MockDBObject.hpp"
+#include "drc_system/mocks/MockObserver.hpp"
+#include "drc_system/mocks/MockDBObject.hpp"
 
 using namespace drc;
 
