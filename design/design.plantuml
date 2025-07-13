@@ -24,20 +24,20 @@ abstract DBObject {
 class DRCViolation {    
     -stale : bool
     -violationId: string
-    -involvedObjects : pair<DBObject*, DBObject*>
+    -involvedObjects : pair<string, string>
     --
     +update()
     +isStale() : bool
-    +getInvolvedObjects(): pair<DBObject*, DBObject*>    
+    +getInvolvedObjects(): pair<string, string>    
 }
 
 class DRCEngine {
-    -dbObjects: unordered_map<string, shared_ptr<DBObject>> objects;
+    -objectViolations: unordered_map<string, shared_ptr<DRCViolations>> objects;
     -<u>instance : DRCEngine</u>
     --
-    +createViolation(obj1: DBObject, obj2 : DBObject)
-    +updateViolations(obj: DBObject)
-    +removeViolations(obj: DBObject)
+    +createViolation(id1: string, id2 : string)
+    +updateViolations(id: string)
+    +removeViolations(id: string)
     +getInstance() : DRCEngine    
 }
 
