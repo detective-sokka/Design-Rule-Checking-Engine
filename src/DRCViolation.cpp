@@ -2,24 +2,25 @@
 #include "drc_system/DRCViolation.hpp"
 
 using namespace drc;
+using namespace std;
 
 void DRCViolation::update()    
 {
     markedForDeletion = true;
 }
 
-std::string DRCViolation::getId() const
+string DRCViolation::getId() const
 {
     return violationId;
 }
-DRCViolation::DRCViolation(std::string violationId, std::string firstObjectId, std::string secondObjectId) 
+DRCViolation::DRCViolation(string violationId, string firstObjectId, string secondObjectId) 
                           : violationId{violationId}
                           , involvedObjectIds{firstObjectId, secondObjectId}
                           , markedForDeletion{false}
 {
 }
 
-std::pair<std::string, std::string> DRCViolation::getInvolvedObjectIds() const
+pair<string, string> DRCViolation::getInvolvedObjectIds() const
 {
     return involvedObjectIds;
 }

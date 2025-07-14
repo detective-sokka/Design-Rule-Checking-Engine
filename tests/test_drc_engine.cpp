@@ -35,12 +35,18 @@ TEST(DRCEngineTest, CreateViolationCreatesANewViolation)
     MockDBObject obj1("id1");
     MockDBObject obj2("id2");
 
-    std::shared_ptr<DRCViolation> violation = instance.createViolation(obj1.getId(), obj2.getId());
+    shared_ptr<DRCViolation> violation = instance.createViolation(obj1.getId(), obj2.getId());
     pair<string, string> objectIds{"id1", "id2"};
 
     ASSERT_TRUE(violation);
     ASSERT_EQ(objectIds, violation->getInvolvedObjectIds());
 
-    std::shared_ptr<DRCViolation> secondViolation = instance.createViolation(obj1.getId(), obj2.getId());
-    ASSERT_NE(secondViolation->getId(),violation->getId());
+    MockDBObject obj3("id3");
+    
+    shared_ptr<DRCViolation> secondViolation = instance.createViolation(obj2.getId(), obj3.getId());
+    objectIds = {"id2", "id3"};
+    ASSERT_TRUE(secondViolation);
+    ASSERT_EQ(objectIds, secondViolation->getInvolvedObjectIds());
+    
+    ASSERT_EQ(instance.getViolations("id2").size(), 2);
 }
