@@ -1,0 +1,10 @@
+services:
+  drc-engine:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: drc-engine
+    image: drc-engine-build
+    volumes:
+      - .:/app
+    working_dir: /app
