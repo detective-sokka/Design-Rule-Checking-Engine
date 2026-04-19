@@ -4,11 +4,9 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-A Digital Rule Checking (DRC) system for verifying electronic board components (Pins, Vias, Wires). It tracks violations when objects are created, updated, or removed. The project has two parts: a C++17 core engine and a Rust/Slint UI (currently a placeholder).
+A Digital Rule Checking (DRC) system for verifying electronic board components (Pins, Vias, Wires). It tracks violations when objects are created, updated, or removed. Built as a C++17 core engine.
 
 ## Commands
-
-### C++ Core Engine
 
 ```bash
 # Initial build (from repo root)
@@ -29,17 +27,9 @@ cd build && ctest
 docker-compose up
 ```
 
-### Rust UI
-
-```bash
-cd "User Interface"
-cargo build
-cargo run
-```
-
 ## Architecture
 
-### C++ Core (`src/`, `include/drc_system/`, `tests/`)
+### Source Layout (`src/`, `include/drc_system/`, `tests/`)
 
 Built around two design patterns:
 
@@ -62,10 +52,6 @@ Built around two design patterns:
 ### Testing
 
 Google Test + Google Mock, fetched via CMake `FetchContent` at build time. Tests live in `tests/` — one file per class. Mock headers are in `include/drc_system/mocks/` and referenced via `target_include_directories` in `tests/CMakeLists.txt`.
-
-### Rust UI (`User Interface/`)
-
-Slint 1.15.1 framework. The `.slint` UI definition is in `ui/app-window.slint`; `build.rs` compiles it. Currently a counter demo — not yet connected to the C++ engine.
 
 ### Design Diagram
 
