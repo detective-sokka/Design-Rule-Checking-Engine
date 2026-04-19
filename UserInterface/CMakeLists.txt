@@ -13,6 +13,7 @@ find_package(Qt6 REQUIRED COMPONENTS Widgets)
 qt_add_executable(drc_ui
     src/main.cpp
     src/MainWindow.cpp
+    include/MainWindow.h
 )
 
 target_include_directories(drc_ui PRIVATE include)
