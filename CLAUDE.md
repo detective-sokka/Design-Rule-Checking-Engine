@@ -35,9 +35,6 @@ docker-compose up
 cd "User Interface"
 cargo build
 cargo run
-
-# Run with display via Docker (uses Xvfb + VNC on port 5900)
-cd "User Interface" && docker-compose up
 ```
 
 ## Architecture
